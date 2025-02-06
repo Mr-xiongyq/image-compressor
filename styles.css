@@ -1,0 +1,458 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* 移动端点击高亮 */
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --success-color: #27ae60;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    
+    /* 响应式单位 */
+    --header-height: clamp(3rem, 10vh, 6rem);
+    --container-padding: clamp(1rem, 3vw, 2rem);
+    --font-size-base: clamp(1rem, 1.5vw, 1.2rem);
+    --font-size-large: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* 基础样式优化 */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%; /* 防止 iPhone 横屏字体变大 */
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    min-height: 100vh;
+    overflow-x: hidden; /* 防止横向滚动 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 头部样式优化 */
+header {
+    text-align: center;
+    padding: var(--container-padding);
+    background: linear-gradient(135deg, var(--primary-color), #357abd);
+    color: white;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    height: var(--header-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header h1 {
+    font-size: var(--font-size-large);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: var(--font-size-base);
+}
+
+/* 主要内容区域优化 */
+main {
+    max-width: min(1200px, 95vw);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* 上传区域样式优化 */
+.upload-section {
+    margin-bottom: 2.5rem;
+}
+
+.upload-area {
+    background-color: var(--card-background);
+    border: 2px dashed var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: clamp(1.5rem, 5vh, 3rem) var(--container-padding);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    touch-action: manipulation; /* 优化移动端触摸 */
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(74, 144, 226, 0.05);
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.upload-icon {
+    width: 80px;
+    height: 80px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.upload-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+    -webkit-appearance: none; /* 移除iOS默认样式 */
+    appearance: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.upload-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+/* 预览区域样式 */
+.preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.preview-box {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.preview-box:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+.preview-box h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.image-container {
+    width: 100%;
+    height: clamp(200px, 50vh, 350px);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.image-info {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* 控制区域样式 */
+.controls-section {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem;
+}
+
+.compression-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.compression-controls label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    min-width: 100px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+#qualityValue {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    min-width: 60px;
+}
+
+.download-btn {
+    width: 100%;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
+    -webkit-appearance: none; /* 移除iOS默认样式 */
+    appearance: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.download-btn:hover {
+    background-color: #219a52;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.download-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background-color: var(--card-background);
+    margin-top: 3rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+footer p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .preview-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --container-padding: 1rem;
+    }
+
+    .preview-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .compression-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .compression-controls label {
+        margin-bottom: 0.5rem;
+    }
+
+    .upload-area {
+        padding: 1.5rem 1rem;
+    }
+
+    .controls-section {
+        padding: 1.5rem;
+    }
+
+    .upload-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* 针对平板设备的优化 */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .image-container {
+        height: clamp(250px, 40vh, 300px);
+    }
+}
+
+/* 针对移动设备横屏的优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding: 1rem;
+    }
+
+    .image-container {
+        height: clamp(150px, 60vh, 250px);
+    }
+
+    .preview-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --card-background: #2d2d2d;
+        --text-color: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .image-container {
+        background-color: #333;
+        border-color: #444;
+    }
+
+    input[type="range"] {
+        background: #444;
+    }
+
+    .upload-area {
+        border-color: var(--primary-color);
+    }
+}
+
+/* 减少动画效果（用户选择减少动画时） */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 打印样式优化 */
+@media print {
+    .upload-section,
+    .controls-section,
+    .download-btn {
+        display: none;
+    }
+
+    .preview-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .image-container {
+        border: 1px solid #000;
+    }
+}
+
+/* 触摸屏设备的悬停状态优化 */
+@media (hover: hover) {
+    .upload-btn:hover,
+    .download-btn:hover {
+        transform: translateY(-1px);
+    }
+}
+
+/* 针对高分辨率屏幕的优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image-container img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* 添加动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.preview-box, .upload-area, .controls-section {
+    animation: fadeIn 0.5s ease-out;
+} 

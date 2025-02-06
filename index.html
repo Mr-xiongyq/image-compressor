@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩工具</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <h1>图片压缩工具</h1>
+        <p>支持PNG、JPG格式图片的在线压缩</p>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/png,image/jpeg" hidden>
+                <div class="upload-content">
+                    <img src="upload-icon.svg" alt="上传图标" class="upload-icon">
+                    <p>点击或拖拽图片到此处</p>
+                    <button class="upload-btn">选择图片</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section">
+            <div class="preview-container">
+                <div class="preview-box">
+                    <h3>原始图片</h3>
+                    <div class="image-container">
+                        <img id="originalImage" alt="原始图片">
+                    </div>
+                    <div class="image-info">
+                        <span>大小：<span id="originalSize">0 KB</span></span>
+                    </div>
+                </div>
+                <div class="preview-box">
+                    <h3>压缩后</h3>
+                    <div class="image-container">
+                        <img id="compressedImage" alt="压缩后的图片">
+                    </div>
+                    <div class="image-info">
+                        <span>大小：<span id="compressedSize">0 KB</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <div class="compression-controls">
+                <label for="quality">压缩质量：</label>
+                <input type="range" id="quality" min="0" max="100" value="80">
+                <span id="qualityValue">80%</span>
+            </div>
+            <button id="downloadBtn" class="download-btn" disabled>下载压缩后的图片</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>注意：所有操作均在浏览器中进行，您的图片不会上传到服务器</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
